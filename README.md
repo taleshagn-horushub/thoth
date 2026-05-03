@@ -129,6 +129,8 @@ See [`docs/skill-format.md`](./docs/skill-format.md) for the full authoring guid
 |---|---|---|
 | [`horus-content-creator`](./skills/horus-content-creator/) | Marketing jurídico | Estratégia completa Meta Ads + Google Ads + Landing Page com compliance OAB |
 | [`market-research-offers-strategy`](./skills/market-research-offers-strategy/) | Estratégia comercial | Wide Research de competidores + criação de Value Ladder produtizada |
+| [`llm-council`](./skills/llm-council/) | Decision support | 5 AI advisors com lentes opostas + peer review anônimo + chairman synthesis. Adaptado da metodologia Karpathy |
+| [`perfil-executivo`](./skills/perfil-executivo/) | Document generation | Gera Sumários / Perfis Executivos em PDF de alto impacto via WeasyPrint (HTML+CSS), com capa, sumário, encarte de oferta e branding |
 
 > 🚧 More skills landing soon. See [the roadmap](#roadmap).
 
