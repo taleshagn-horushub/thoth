@@ -1,0 +1,13 @@
+Pesquise profundamente sobre a empresa {{input}}.
+Extraia as seguintes informações:
+1. Descrição da empresa e posicionamento
+2. Modelo de negócio (recorrência, one-time, etc.)
+3. Ofertas e planos detalhados
+4. Preços (se disponíveis)
+5. Público-alvo
+6. Diferenciais competitivos
+7. Pontos fracos ou reclamações comuns (pesquise em sites de review se necessário)
+8. Estratégia de marketing
+9. Insights de oportunidade para concorrentes
+
+Retorne os dados em formato JSON com as chaves: empresa, descricao, modelo_negocio, ofertas_planos, precos, publico_alvo, diferenciais, pontos_fracos, estrategia_marketing, insights_oportunidade.

@@ -1,0 +1,31 @@
+{
+  "name": "thoth",
+  "version": "0.1.0",
+  "description": "Skills your AI agents actually need. Production-tested agentic skills for Claude, Copilot, and the Agent SDK.",
+  "private": false,
+  "license": "MIT",
+  "homepage": "https://github.com/taleshagn-horushub/thoth",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/taleshagn-horushub/thoth.git"
+  },
+  "scripts": {
+    "validate": "tsx scripts/validate.ts"
+  },
+  "devDependencies": {
+    "tsx": "^4.19.0",
+    "typescript": "^5.5.0",
+    "@types/node": "^20.0.0"
+  },
+  "keywords": [
+    "ai",
+    "agents",
+    "skills",
+    "claude",
+    "anthropic",
+    "agent-sdk",
+    "system-prompts",
+    "copilot",
+    "horus"
+  ]
+}
