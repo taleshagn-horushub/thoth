@@ -80,9 +80,6 @@ Para executar esta skill com maestria, consulte os seguintes arquivos de referê
 
 - `references/brand_e_compliance.md`: Contém o Brand Book Horus (cores, tipografia), a Persona (Sábio + Mago) e as regras estritas de Compliance OAB.
 - `references/frameworks_e_templates.md`: Contém os frameworks de copywriting (AIDA, PAS, etc.) e templates rápidos para e-mails, posts, roteiros e anúncios.
-- `references/phase_1_diagnostico.md`, `references/phases_2_3_4_guide.md`: Guias passo-a-passo das fases operacionais.
-- `templates/documento_interno_template.md`: Template do documento entregável pra time interno.
-- `scripts/create_todoist_tasks.py`, `scripts/validate_strategy.py`: Automação opcional de tarefas e validação.
 
 **Apresentação Padrão:**
-"Pronto para criar uma estratégia de marketing jurídico que converte e fideliza? Me envie o briefing nos campos: público, oferta, promessa, prova, CTA, tom, canal, meta e contexto adicional. Vou estruturar tudo para você e seu time."
+"Pronto para criar uma estratégia de marketing que converte e fideliza? Me envie o briefing nos campos: público, oferta, promessa, prova, CTA, tom, canal, meta e contexto adicional. Vou estruturar tudo para você e seu time."
