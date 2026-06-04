@@ -15,8 +15,10 @@ Saídas:
     - Escreve o texto limpo em --out (default: <doc>.extracted.txt ao lado do original)
     - Imprime no stdout um JSON com metadados: paginas, chars, words, headings[], out_path
 
-Dependências: PDF usa `pypdf` (puro Python, sem libs nativas — seguro no Windows).
-    Instale com:  py -m pip install pypdf      (ou: pip install pypdf)
+Dependências: PDF usa `pdfplumber` (preferido — reconstrói palavras em PDFs com
+    design/tracking pesado) e cai pra `pypdf` se aquele faltar. Ambos puro Python,
+    sem libs nativas — seguros no Windows.
+    Instale com:  py -m pip install pdfplumber pypdf
     .md/.txt não precisam de dependência.
 
 Nota de ambiente: NÃO depende de WeasyPrint/GTK. Aqui só LEMOS documentos; geração de
@@ -43,15 +45,34 @@ def read_markdown(path: str) -> str:
         return f.read()
 
 
-def read_pdf(path: str) -> str:
+def read_pdf_plumber(path: str):
+    """Extração posicional via pdfplumber. Agrupa glifos por coordenada, o que
+    reconstrói palavras mesmo em PDFs com tracking/kerning pesado (relatórios
+    com design, onde o pypdf devolve 'C o m o' com espaço entre cada letra).
+    x_tolerance baixo evita juntar palavras vizinhas. Retorna None se indisponível."""
+    try:
+        import pdfplumber
+    except ImportError:
+        return None
+    pages = []
+    with pdfplumber.open(path) as pdf:
+        for page in pdf.pages:
+            try:
+                pages.append(page.extract_text(x_tolerance=1) or "")
+            except Exception as e:
+                sys.stderr.write(f"aviso: pdfplumber falhou numa página: {e}\n")
+                pages.append("")
+    return "\f".join(pages)
+
+
+def read_pdf_pypdf(path: str) -> str:
     try:
         from pypdf import PdfReader
     except ImportError:
         sys.stderr.write(
-            "ERRO: pypdf não instalado. Rode: py -m pip install pypdf\n"
+            "ERRO: nenhum extrator de PDF instalado. Rode: py -m pip install pdfplumber pypdf\n"
         )
         sys.exit(2)
-
     reader = PdfReader(path)
     pages = []
     for page in reader.pages:
@@ -60,8 +81,17 @@ def read_pdf(path: str) -> str:
         except Exception as e:  # página corrompida não derruba o doc inteiro
             sys.stderr.write(f"aviso: falha ao extrair uma página: {e}\n")
             pages.append("")
-    # \f (form feed) marca quebra de página — útil pro agente referenciar "pág. N"
     return "\f".join(pages)
+
+
+def read_pdf(path: str) -> str:
+    # pdfplumber primeiro (reconstrói palavras em PDFs design-heavy); pypdf como fallback.
+    text = read_pdf_plumber(path)
+    if text is None:
+        sys.stderr.write("aviso: pdfplumber não instalado, usando pypdf (pior em PDFs com tracking)\n")
+        text = read_pdf_pypdf(path)
+    # \f (form feed) marca quebra de página — útil pro agente referenciar "pág. N"
+    return text
 
 
 def clean_text(text: str) -> str:
@@ -130,6 +160,11 @@ def main():
     headings = detect_headings(text)
 
     out_path = args.out or (os.path.splitext(path)[0] + ".extracted.txt")
+    # Cria a pasta de saída se não existir — evita FileNotFoundError quando o
+    # orquestrador aponta para output/<slug>/ ainda não criado.
+    out_dir = os.path.dirname(out_path)
+    if out_dir:
+        os.makedirs(out_dir, exist_ok=True)
     with open(out_path, "w", encoding="utf-8") as f:
         f.write(text)
 
