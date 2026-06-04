@@ -1,0 +1,114 @@
+/* brand.css — Sistema visual Horus para artes de redes sociais.
+   Fonte de verdade: skills/horus-content-creator/references/brand_book_horus.md
+   Importe este arquivo em cada template HTML:  <link rel="stylesheet" href="../brand.css">
+   (ou ajuste o caminho relativo conforme onde o HTML for salvo). */
+
+/* Web fonts da marca. Requer rede no momento do render (render.py espera o carregamento
+   via --virtual-time-budget). Fallback seguro caso offline. */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Open+Sans:wght@400;600&display=swap');
+
+:root {
+  --horus-purple: #6B00B9;  /* primária — poder, sabedoria, destaque */
+  --horus-blue:   #00C8FF;  /* primária — inovação, tecnologia, CTA */
+  --horus-dark:   #1A1A1A;  /* texto principal, fundos escuros */
+  --horus-white:  #FFFFFF;
+  --horus-grey:   #F0F0F0;  /* fundos claros, caixas secundárias */
+
+  --font-title: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+  --font-body:  'Open Sans', 'Segoe UI', Arial, sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body { overflow: hidden; }
+
+/* Canvas — defina a classe da dimensão alvo no <body>.
+   O tamanho do canvas DEVE bater com --window-size passado ao render.py. */
+.canvas {
+  position: relative;
+  overflow: hidden;
+  font-family: var(--font-body);
+  color: var(--horus-white);
+  display: flex;
+  flex-direction: column;
+}
+.canvas--ig-vertical { width: 1080px; height: 1350px; }   /* feed vertical IG */
+.canvas--square      { width: 1080px; height: 1080px; }   /* IG/LinkedIn quadrado */
+.canvas--yt-thumb    { width: 1280px; height: 720px; }    /* thumbnail YouTube */
+.canvas--vertical    { width: 1080px; height: 1920px; }   /* TikTok/Reels/Stories */
+
+/* Fundos */
+.bg-purple { background: var(--horus-purple); }
+.bg-blue   { background: var(--horus-blue); }
+.bg-dark   { background: var(--horus-dark); }
+.bg-light  { background: var(--horus-grey); color: var(--horus-dark); }
+.bg-gradient {
+  background: linear-gradient(135deg, var(--horus-purple) 0%, var(--horus-dark) 100%);
+}
+.bg-gradient-blue {
+  background: linear-gradient(135deg, var(--horus-purple) 0%, var(--horus-blue) 140%);
+}
+
+/* Grid digital sutil (estilo de marca: linhas neon/grade) — opcional, sobrepõe o fundo */
+.grid-overlay::before {
+  content: "";
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(0,200,255,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,200,255,0.06) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+}
+
+/* Tipografia */
+.title {
+  font-family: var(--font-title);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+}
+.title--xl { font-size: 92px; }
+.title--lg { font-size: 72px; }
+.title--md { font-size: 54px; }
+.body {
+  font-family: var(--font-body);
+  font-weight: 400;
+  line-height: 1.35;
+}
+.body--lg { font-size: 40px; }
+.body--md { font-size: 34px; }
+.accent  { color: var(--horus-blue); }
+.muted   { opacity: 0.78; }
+
+/* Espaçamento de conteúdo (margem segura — nada vital encosta na borda) */
+.pad { padding: 96px 88px; }
+.pad-lg { padding: 110px 96px; }
+
+/* Rodapé/handle e numeração de slide */
+.footer {
+  position: absolute;
+  left: 88px; right: 88px; bottom: 64px;
+  display: flex; align-items: center; justify-content: space-between;
+  font-family: var(--font-title); font-weight: 700; font-size: 30px;
+}
+.handle { color: var(--horus-blue); }
+.slide-num { opacity: 0.6; font-size: 28px; }
+
+/* Pílula/etiqueta (ex.: "MELHORIA RÁPIDA", "DADO") */
+.pill {
+  display: inline-block;
+  font-family: var(--font-title); font-weight: 700;
+  font-size: 26px; letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 14px 28px; border-radius: 999px;
+  background: rgba(0,200,255,0.15); color: var(--horus-blue);
+  border: 2px solid var(--horus-blue);
+}
+
+/* Número grande de destaque (slides de dado) */
+.bignum {
+  font-family: var(--font-title); font-weight: 900;
+  font-size: 220px; line-height: 1; color: var(--horus-blue);
+}
+
+/* Fonte da estatística (rodapé pequeno em slides de dado) */
+.source { font-size: 24px; opacity: 0.6; font-family: var(--font-body); }
