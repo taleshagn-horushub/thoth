@@ -57,8 +57,6 @@ Liste timestamps com títulos curtos e descritivos. Ex.:
 - [ ] Descrição com resumo + capítulos + CTA
 - [ ] Passou pelo guardrail `voz-horus-oab.md`
 
-## Exemplo campeão (preencher)
+## Exemplos campeões (canônicos)
 
-> **[SLOT]** Cole aqui o roteiro (ou link/transcrição) do vídeo de melhor desempenho do Horus — e, se possível, o título e a thumbnail que mais converteram em clique. Quando preenchido, **imite a estrutura de introdução, o estilo de título e o conceito de thumbnail** desse exemplo.
->
-> Enquanto vazio: siga a estrutura-base e avise que um exemplo campeão (especialmente de título/thumbnail) elevaria a taxa de clique.
+Para títulos/thumbnails, herde a voz dos criativos de autoridade e educação (`horus-core/docs/estrategia/05-criativos-conteudo-gtm/`): `d02-tese`, `d05-provimento`, `d03-77`, `d28-faq`. Estilo de título: pergunta direta ou tese em pt-BR jurídico, com 1 palavra de destaque; thumbnail no sistema Horus (dark + gradiente, ≤5 palavras, ver `multicanal-designer/youtube-thumb`). Conteúdo educativo, **sem promessa**; cases só da própria Horus. A copy de referência está no pacote privado.

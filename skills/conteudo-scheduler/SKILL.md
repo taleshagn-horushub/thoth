@@ -30,14 +30,16 @@ Crie um `pieces.json` com as peças a agendar. Cada item: canal + título + (opc
 
 ### Passo 2 — (Opcional) Ajustar a cadência
 
-A cadência default (boa prática, sem saturar) é:
+A cadência default (padrão Horus: Instagram é o feed diário; demais apoiam) é:
 
 | Canal | Dias | Hora |
 |-------|------|------|
+| Instagram | seg–sáb (1 post/dia útil) | 18:00 |
 | LinkedIn | ter, qui | 09:00 |
-| Instagram | seg, qua, sex | 18:00 |
-| TikTok/Reels | dias úteis | 12:00 |
+| TikTok/Reels | seg, qua, sex | 12:00 |
 | YouTube | qua (semanal) | 19:00 |
+
+O calendário também sugere o **pilar de conteúdo** por dia (rodízio Educar/Demonstrar/Processo/Autoridade/Oferta), espelhando a estratégia Horus (`horus-core/docs/estrategia/05-criativos-conteudo-gtm/calendario-30-dias.md`). É guia editorial — não muda a alocação de datas.
 
 Para mudar, crie um `cadence.json` (sobrescreve só os canais que você listar). `weekday`: 0=segunda … 6=domingo.
 

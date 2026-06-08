@@ -46,8 +46,6 @@ O tom informal do TikTok aumenta o risco de soar como captação ou promessa. Ma
 - [ ] Fecha com gancho de comentário/reassistir
 - [ ] Passou pelo guardrail `voz-horus-oab.md`
 
-## Exemplo campeão (preencher)
+## Exemplos campeões (canônicos)
 
-> **[SLOT]** Cole aqui a transcrição do Reel/TikTok de melhor retenção do Horus. Quando preenchido, **imite o estilo de hook, o ritmo da fala e o tipo de corte** desse exemplo — é o que melhor ensina a voz falada da marca.
->
-> Enquanto vazio: siga a estrutura-base e avise que um exemplo campeão calibraria o tom falado.
+Use os ganchos dos criativos educativos/FAQ como base falada: `d28-faq` ("Marketing jurídico é proibido? Spoiler: não."), `d03-77` ("77% dos advogados já usam IA — e você?"), `d05-provimento`. Herde: hook de pergunta/objeção nos 3 primeiros segundos, fala direta em "você", desmistificação educativa, **sem promessa nem caso concreto**. A copy de referência está no pacote privado (`horus-core/docs/estrategia/05-criativos-conteudo-gtm/`).

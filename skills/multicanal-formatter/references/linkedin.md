@@ -49,8 +49,6 @@ Profissional mas humano. Sábio + Mago: autoridade que esclarece, não que intim
 - [ ] Link (se houver) vai para comentário fixado, não no corpo
 - [ ] Passou pelo guardrail `voz-horus-oab.md`
 
-## Exemplo campeão (preencher)
+## Exemplos campeões (canônicos)
 
-> **[SLOT]** Cole aqui o post de LinkedIn de melhor desempenho do Horus (mais comentários/impressões). Quando preenchido, **imite o ritmo, o comprimento e a voz dele**. A peça real ensina o que a tabela não captura — como o autor faz a virada, que tipo de pergunta gera comentário neste público específico.
->
-> Enquanto vazio: siga a estrutura-base e avise que um exemplo campeão calibraria melhor a voz.
+Referência de voz: a tese e os bordões da campanha Horus (`horus-core/docs/estrategia/05-criativos-conteudo-gtm/`) — `d02-tese` ("Agência, software e curso. Os três — integrados."), `d10-mantra1`/`d25-mantra2`, `d05-provimento`. No LinkedIn (thought leadership do Tales), herde: tom de especialista que respeita o leitor (não guru), "você", número concreto, posicionamento por categoria (agências × legaltechs × cursos), e fechamento que convida ao comentário. **Cases só da própria Horus** (produto/operação), nunca resultado de cliente. A copy de referência está no pacote privado.

@@ -43,8 +43,13 @@ Regras de slide: máximo ~40 palavras por slide; texto escaneável; cada slide d
 - [ ] 5–12 hashtags relevantes
 - [ ] Passou pelo guardrail `voz-horus-oab.md`
 
-## Exemplo campeão (preencher)
+## Exemplos campeões (canônicos)
 
-> **[SLOT]** Cole aqui o melhor carrossel real do Horus (o de maior salvamento/alcance), com a legenda. Quando preenchido, **imite a estrutura, o ritmo e a voz deste exemplo** em vez de só seguir a tabela acima — a peça real carrega nuances que a regra não captura.
->
-> Enquanto vazio: siga a estrutura-base e avise o usuário que um exemplo campeão elevaria o resultado.
+Os 12 criativos da campanha de lançamento (`horus-core/docs/estrategia/05-criativos-conteudo-gtm/_criativos/`) são os exemplos campeões — peças reais, validadas por OAB. **Imite a estrutura, o ritmo e a voz deles** (não apenas as regras acima). Mapeamento por estilo visual (ver `multicanal-designer`):
+
+- **default** (manifesto/tese/persona/FAQ): `d01-manifesto`, `d02-tese`, `d18-solo`, `d24-banca`, `d28-faq`, `d05-provimento`
+- **data** (estatística): `d03-77` ("77% dos advogados já usam IA. E o seu escritório?")
+- **mantra** (bordão): `d10-mantra1` ("Marketing não é sobre curtidas. É sobre faturamento."), `d25-mantra2`
+- **offer** (planos/portfólio/diagnóstico): `d06-diagnostico`, `d17-ecossistema`, `d27-trafego`
+
+Padrões a herdar: legenda que abre com gancho de dor/atualidade; CTA "Salve/Compartilhe/Comente/Link na bio"; hashtags jurídicas (`#advocacia #marketingjuridico #IAnaadvocacia #OAB …`); **sempre educar, nunca prometer resultado**. A copy literal de cada criativo está no pacote privado (`calendario-30-dias.md`).

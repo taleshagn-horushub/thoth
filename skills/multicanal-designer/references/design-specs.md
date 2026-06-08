@@ -1,54 +1,58 @@
-# Specs de design por canal
+# Specs de design — Sistema Horus Hub
 
-Dimensões, zonas seguras e o mapa de qual template usar. Todas as artes usam `assets/brand.css` (cores e fontes Horus). Renderize com `scripts/render.py`.
+Sistema visual canônico (fonte de verdade: `horus-core/docs/estrategia/02-marca/guia-de-marca-horus.md` + o motor `horus_creative_engine.py`). Todas as artes usam `assets/brand.css`. Renderize com `scripts/render.py`.
 
-## Dimensões e template
+## Identidade (resumo)
 
-| Canal | Dimensão (px) | Classe canvas | Templates | Escala |
-|-------|---------------|---------------|-----------|--------|
-| Instagram (carrossel/feed) | 1080 × 1350 | `canvas--ig-vertical` | `ig-cover`, `ig-content`, `ig-data`, `ig-cta` | 2 |
-| LinkedIn (imagem do post) | 1080 × 1080 | `canvas--square` | `linkedin-post` | 2 |
-| YouTube (thumbnail) | 1280 × 720 | `canvas--yt-thumb` | `youtube-thumbnail` | 2 |
-| TikTok/Reels (cover) | 1080 × 1920 | `canvas--vertical` | `tiktok-cover` | 2 |
+- **Fundo:** dark `#0a0a0f` + 2 glows (roxo topo-direita, azul base-esquerda) + grid sutil 64px.
+- **Cores:** roxo `#7c26d9` (CTA/marca), azul `#3b82f6` ("Hub"/destaque), magenta `#a855f7` (início do gradiente). Gradiente de destaque `100deg #a855f7→#3b82f6`; CTA `100deg #7c26d9→#3b82f6`.
+- **Fontes:** Space Grotesk (títulos/marca/kicker), Inter (corpo), Montserrat (números).
+- **Marca:** emblema + "Horus **Hub**" (Hub azul) no topo. Handle `@horushub.ia`. Tagline "Transformando escritórios de advocac[IA] com IA e Marketing Jurídico".
+- **Recurso `[IA]`:** colchete roxo **só** em palavra que já contém "ia" (advocac[IA], estratég[IA]). Nunca em "Hub". Use `<span class="iabr">[<b>IA</b>]</span>`.
 
-A dimensão passada ao `render.py` (`--width`/`--height`) **deve bater** com a classe canvas do HTML, senão a arte fica cortada ou com borda.
+## Os 4 estilos (vocabulário do feed)
 
-## Zonas seguras (não deixe nada vital aqui)
+| Estilo | Template | Composição | Quando usar |
+|--------|----------|------------|-------------|
+| **default** | `feed-default.html` | kicker + headline + sub + (pill) | manifesto, tese, persona, FAQ |
+| **data** | `feed-data.html` | kicker + número gigante (`.bignum`) + headline | estatística forte (ex.: "77%") |
+| **mantra** | `feed-mantra.html` | aspas grandes + frase centralizada | bordões de marca |
+| **offer** | `feed-offer.html` | kicker + headline + sub + linhas (label/valor) + pill | ecossistema, planos, diagnóstico |
 
-- **Instagram carrossel:** a seta de "próximo" cobre a borda direita central; o último slide deve ter CTA claro. Margem segura já embutida na classe `.pad`.
-- **TikTok/Reels:** a UI do app cobre ~220px no topo e ~320px na base (legenda, botões, música). O template `tiktok-cover` já recua o conteúdo (`padding:260px 80px 360px`). Nunca ponha texto essencial fora disso.
-- **YouTube thumbnail:** o tempo do vídeo aparece no canto inferior direito — evite texto ali.
+Destaque no título: envolva a palavra-chave (a que carrega a tensão) em `<span class="hl">…</span>` (gradiente). Use com parcimônia — 1 trecho por título.
 
-## Mapa: draft → slides (carrossel Instagram)
+## Dimensões por canal
 
-Um carrossel tem 6–10 slides. Use os tipos de slide assim:
+| Canal | Dimensão (px) | Classe canvas | Template | Escala |
+|-------|---------------|---------------|----------|--------|
+| Instagram (feed/carrossel) | 1080 × 1350 | `canvas--feed` | os 4 estilos | 1–2 |
+| LinkedIn (imagem do post) | 1080 × 1080 | `canvas--square` | `linkedin-square.html` | 1–2 |
+| YouTube (thumbnail) | 1280 × 720 | `canvas--yt-thumb` | `youtube-thumb.html` | 1–2 |
+| TikTok/Reels (cover) | 1080 × 1920 | `canvas--vertical` | `tiktok-cover.html` | 1–2 |
 
-| Posição | Tipo | Template | Conteúdo |
-|---------|------|----------|----------|
-| 1 | Capa | `ig-cover` | o gancho (≤8 palavras) com 1 palavra em `.accent` (azul) |
-| 2 … N-1 | Conteúdo ou Dado | `ig-content` / `ig-data` | 1 ideia por slide; use `ig-data` quando o slide é um número forte |
-| N | CTA | `ig-cta` | fechamento + CTA informativo (salvar/comentar/seguir) |
+A dimensão passada ao `render.py` (`--width/--height`) **deve bater** com a classe `canvas--*`. O motor canônico usa `--scale 1`; use `--scale 2` se quiser saída retina.
 
-Cada slide vira um arquivo `slide-01.html`, `slide-02.html`, … na pasta de saída. O `render.py` renderiza a pasta inteira de uma vez.
+## Carrossel (IG)
 
-## Recursos de marca disponíveis no brand.css
+Um carrossel = vários slides, cada um um arquivo (`slide-01.html`…). Alterne estilos para dar ritmo (capa em `default`, um slide `data`, fechamento com pill). Marque o último com CTA informativo. A afford. `arraste →` (classe `.swipe`) vai no rodapé dos slides que pedem continuação.
 
-- **Fundos:** `bg-purple`, `bg-blue`, `bg-dark`, `bg-light`, `bg-gradient` (purple→dark), `bg-gradient-blue` (purple→blue). Alterne fundos entre slides para dar ritmo (ex.: capa em gradiente, conteúdo em dark, dado em gradient-blue, CTA em purple).
-- **Grade digital:** adicione a classe `grid-overlay` ao canvas para a textura de grade neon sutil da marca.
-- **Tipografia:** `.title` (Montserrat) com `--xl/--lg/--md`; `.body` (Open Sans) com `--lg/--md`; `.accent` (azul), `.muted`.
-- **Componentes:** `.pill` (etiqueta), `.bignum` (número gigante p/ dado), `.footer` + `.handle` + `.slide-num`, `.source` (crédito de fonte).
+## Zonas seguras
 
-## Princípios de design (Horus)
+- **TikTok/Reels:** UI cobre ~220px topo / ~320px base — o template já recua. Nada essencial fora disso.
+- **YouTube:** o tempo do vídeo cobre o canto inferior direito.
+- **Instagram carrossel:** a seta de "próximo" fica na borda direita central.
 
-- **Um foco por arte.** Capa promete uma coisa; cada slide entrega uma. Slide poluído não é lido.
-- **Hierarquia clara.** Título grande (Montserrat 800), corpo menor (Open Sans). O olho deve saber onde pousar primeiro.
-- **Destaque com propósito.** Use o azul (`.accent`) na palavra que carrega a tensão — não em tudo.
-- **Marca consistente, não engessada.** Mesma paleta e fontes sempre; varie fundo e composição para não ficar repetitivo numa série.
-- **Dado sempre com fonte.** Slides de número (`ig-data`) levam `.source` — coerente com o guardrail de não inventar dado.
+## Emblema (asset de marca)
+
+O `brand.css` desenha um **hexágono CSS** (`.emblem-ph`) como placeholder público. Para a arte **real da Horus**, troque por `<img class="emblem" src="emblema.png">` apontando para o emblema oficial (asset privado em `horus-core/docs/estrategia/02-marca/assets/`). Não commite o logo proprietário no repo público.
+
+## Produção Horus: prefira o motor canônico
+
+Para gerar arte Horus de produção (feed 1080×1350, os 4 estilos, emblema real), **use o motor** `horus-core/docs/estrategia/05-criativos-conteudo-gtm/_criativos/horus_creative_engine.py` (`render_criativos(items, out_dir)`) — é a fonte de verdade do visual, já com o emblema oficial. Este `brand.css`/templates são o tema público equivalente, para uso fora do ambiente Horus ou quando o motor não estiver acessível.
 
 ## Erros comuns
 
-- Dimensão do render ≠ classe canvas → arte cortada. Confira a tabela.
-- Texto demais por slide → ilegível no celular. Máx. ~40 palavras (conteúdo) / ~8 (capa).
-- `brand.css` em pasta errada → arte sem estilo (fundo branco, fonte serifada). Copie o `brand.css` para a MESMA pasta dos slides e use `href="brand.css"`.
-- Esquecer a zona segura do TikTok → texto coberto pela UI do app.
+- Dimensão do render ≠ classe canvas → arte cortada.
+- `brand.css` em pasta errada → arte sem estilo (fundo branco). Copie para a MESMA pasta dos slides.
+- `[IA]` em palavra sem "ia" (ex.: "Hub") — errado; é recurso semântico, não decorativo.
+- Texto demais por slide → ilegível no celular.

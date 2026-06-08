@@ -1,6 +1,6 @@
 ---
 name: multicanal-formatter
-description: Transforma uma ideia (ou um banco de ideias do doc-idea-miner) em conteúdo NATIVO e pronto para revisão em até 4 canais — Instagram (carrossel + legenda), LinkedIn (post longo), TikTok (roteiro shot-a-shot), YouTube (roteiro + título + capítulos + thumbnail). Use sempre que o usuário quiser "virar esta ideia em post/carrossel/roteiro", "adaptar para Instagram e LinkedIn", "fazer conteúdo para os canais", ou formatar pautas para redes sociais. Aplica a voz da marca Horus e um guardrail de compliance OAB (Provimento 205/2021) em toda saída jurídica. É o segundo estágio do pipeline de conteúdo Horus; consome o banco de ideias e entrega drafts. Invoque mesmo sem a palavra "skill".
+description: Transforma uma ideia (ou um banco de ideias do doc-idea-miner) em conteúdo NATIVO e pronto para revisão em até 4 canais — Instagram (carrossel + legenda), LinkedIn (post longo), TikTok (roteiro shot-a-shot), YouTube (roteiro + título + capítulos + thumbnail). Use sempre que o usuário quiser "virar esta ideia em post/carrossel/roteiro", "adaptar para Instagram e LinkedIn", "fazer conteúdo para os canais", ou formatar pautas para redes sociais. Aplica a voz da marca Horus Hub (especialista, "você", concreto, sem hype) e um guardrail de compliance OAB (Provimento 205/2021) em toda saída jurídica. Para conteúdo Horus, puxa persona/pilar/oferta da estratégia canônica. É o segundo estágio do pipeline de conteúdo Horus; consome o banco de ideias e entrega drafts. Invoque mesmo sem a palavra "skill".
 license: MIT
 ---
 
@@ -18,9 +18,11 @@ A razão de existir: o erro mais comum em conteúdo multicanal é escrever uma v
 
 ## Workflow
 
-### Passo 1 — Selecionar canais e ideias
+### Passo 1 — Selecionar canais e ideias (e a estratégia, se for Horus)
 
 Pergunte (ou receba do orquestrador): quais canais? quais ideias do banco? Se o usuário não especificar, use o `canal_sugerido` de cada ideia como default e confirme.
+
+Se o conteúdo for **da Horus**, leia `references/estrategia-horus.md` (ponteiro para o pacote canônico privado em horus-core): defina a **persona** (solo/boutique/banca) e o **pilar** (Educar/Demonstrar/Processo/Autoridade) que a peça serve — isso ancora o ângulo e o CTA. Os 12 criativos D01–D28 são os exemplos campeões.
 
 ### Passo 2 — Aplicar a gramática de cada canal
 
@@ -31,7 +33,7 @@ Para **cada canal escolhido**, leia a referência correspondente e siga a estrut
 - TikTok → `references/tiktok.md`
 - YouTube → `references/youtube.md`
 
-Cada referência traz: a estrutura nativa, os limites (caracteres/duração), o que faz o conteúdo performar naquela plataforma, um checklist, e um **slot de "exemplo campeão"** — a peça real de melhor desempenho do usuário naquele canal. Quando o exemplo campeão estiver preenchido, **imite a estrutura e a voz dele**: exemplo concreto vence regra abstrata. Quando estiver vazio, siga a estrutura-base da referência e sinalize ao usuário que adicionar um exemplo campeão elevará a qualidade.
+Cada referência traz: a estrutura nativa, os limites (caracteres/duração), o que faz o conteúdo performar naquela plataforma, um checklist, e os **exemplos campeões canônicos** — os 12 criativos da campanha Horus (D01–D28), mapeados por canal/estilo. **Imite a estrutura e a voz deles**: exemplo concreto vence regra abstrata. A copy literal dos criativos está no pacote privado (horus-core); fora do ambiente Horus, siga a estrutura-base e a voz de `references/voz-horus-oab.md`.
 
 Reuso (não reinventar):
 - Para **ganchos/legendas curtas** por tipo (autoridade, viral, storytelling…), a skill `social-media-captions` do thoth tem um mapa por plataforma — use como banco de hooks.

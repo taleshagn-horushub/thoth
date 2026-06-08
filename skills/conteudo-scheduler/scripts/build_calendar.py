@@ -37,13 +37,19 @@ try:
 except (AttributeError, ValueError):
     pass
 
-# Cadência default por canal — boa prática de ritmo sem saturar.
+# Cadência default por canal (padrão Horus: Instagram é o feed diário; demais apoiam).
 # weekday: 0=segunda ... 6=domingo. time em HH:MM (hora local).
 DEFAULT_CADENCE = {
-    "linkedin":  {"weekdays": [1, 3],          "time": "09:00"},  # ter/qui manhã
-    "instagram": {"weekdays": [0, 2, 4],       "time": "18:00"},  # seg/qua/sex fim de tarde
-    "tiktok":    {"weekdays": [0, 1, 2, 3, 4], "time": "12:00"},  # dias úteis, meio-dia
-    "youtube":   {"weekdays": [2],             "time": "19:00"},  # qua à noite (semanal)
+    "instagram": {"weekdays": [0, 1, 2, 3, 4, 5], "time": "18:00"},  # 1 post/dia útil (seg–sáb)
+    "linkedin":  {"weekdays": [1, 3],             "time": "09:00"},  # ter/qui manhã
+    "tiktok":    {"weekdays": [0, 2, 4],          "time": "12:00"},  # seg/qua/sex meio-dia
+    "youtube":   {"weekdays": [2],                "time": "19:00"},  # qua à noite (semanal)
+}
+
+# Rodízio de pilares de conteúdo (guia editorial — não afeta a alocação de datas).
+# Espelha a estratégia Horus (Educar 40 / Demonstrar 25 / Processo 20 / Autoridade 15).
+PILAR_POR_DIA = {
+    0: "Educar", 1: "Demonstrar", 2: "Processo", 3: "Autoridade", 4: "Oferta", 5: "Educar",
 }
 
 WEEKDAY_PT = ["seg", "ter", "qua", "qui", "sex", "sáb", "dom"]
@@ -105,7 +111,7 @@ def write_md(rows, path):
             lines.append(f"\n## Semana {wk}\n")
         lines.append(
             f"- **{dt.strftime('%d/%m')} ({WEEKDAY_PT[dt.weekday()]}) {dt.strftime('%H:%M')}** "
-            f"· `{r['channel']}` — {r.get('title','(sem título)')}"
+            f"· `{r['channel']}` · _{PILAR_POR_DIA.get(dt.weekday(), '-')}_ — {r.get('title','(sem título)')}"
         )
         if r.get("asset"):
             lines.append(f"    - arte: `{r['asset']}`")

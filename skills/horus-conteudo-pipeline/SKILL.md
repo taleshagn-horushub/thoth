@@ -81,6 +81,16 @@ Cada arquivo de draft começa com um cabeçalho rastreável: ideia-fonte (núcle
 - **Guardrail sempre.** Nenhuma peça sai sem passar pela checagem de voz + OAB.
 - **Drafts, não auto-publish.** A saída é para revisão humana. Publicação/agendamento (ex.: integração com agendador) está fora do escopo desta versão.
 
+## Produção Horus (marca/estratégia canônica)
+
+Ao produzir conteúdo **da Horus** (não conteúdo genérico), os estágios devem usar a fonte de verdade privada do horus-core:
+
+- **Estratégia** (formatar): ler `horus-core/docs/estrategia/PIPELINE-CONFIG.md` — define persona (solo/boutique/banca), pilar (Educar/Demonstrar/Processo/Autoridade), value ladder/CTA e os 12 criativos campeões. O `multicanal-formatter` aplica a voz Horus Hub (especialista, "você", concreto, sem hype) + guardrail OAB.
+- **Visual** (desenhar): usar o motor canônico `horus-core/docs/estrategia/05-criativos-conteudo-gtm/_criativos/horus_creative_engine.py` (`render_criativos`) — emblema oficial + os 4 estilos. O tema público da `multicanal-designer` é o equivalente para uso fora do ambiente Horus.
+- **Cadência** (agendar): o `conteudo-scheduler` já reflete o ritmo Horus (feed diário + rodízio de pilares).
+
+Fora do ambiente Horus (outro cliente/uso genérico), os estágios rodam só com o tema/voz públicos das skills.
+
 ## Fora de escopo (versão atual)
 
 **Publicação automática** nas redes (Postiz conectado / APIs Meta/LinkedIn), analytics de desempenho, e loop de feedback (desempenho → ajuste de pauta). A saída para em peças prontas + calendário proposto; o `postiz-ready.json` já é a ponte para a automação futura, consumindo a mesma pasta `output/<slug>/`.

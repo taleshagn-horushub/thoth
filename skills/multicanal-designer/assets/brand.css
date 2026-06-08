@@ -1,114 +1,104 @@
-/* brand.css — Sistema visual Horus para artes de redes sociais.
-   Fonte de verdade: skills/horus-content-creator/references/brand_book_horus.md
-   Importe este arquivo em cada template HTML:  <link rel="stylesheet" href="../brand.css">
-   (ou ajuste o caminho relativo conforme onde o HTML for salvo). */
+/* brand.css — Sistema visual Horus Hub para artes de redes sociais.
+   Fonte de verdade: horus-core/docs/estrategia/02-marca/guia-de-marca-horus.md +
+   o motor canônico horus_creative_engine.py. Este arquivo é o TEMA PÚBLICO
+   (cores/fontes/layout); a arte de produção Horus usa o motor privado.
 
-/* Web fonts da marca. Requer rede no momento do render (render.py espera o carregamento
-   via --virtual-time-budget). Fallback seguro caso offline. */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Open+Sans:wght@400;600&display=swap');
+   Importe na MESMA pasta dos slides gerados:  <link rel="stylesheet" href="brand.css"> */
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=Montserrat:wght@700;800&display=swap');
 
 :root {
-  --horus-purple: #6B00B9;  /* primária — poder, sabedoria, destaque */
-  --horus-blue:   #00C8FF;  /* primária — inovação, tecnologia, CTA */
-  --horus-dark:   #1A1A1A;  /* texto principal, fundos escuros */
-  --horus-white:  #FFFFFF;
-  --horus-grey:   #F0F0F0;  /* fundos claros, caixas secundárias */
+  --roxo:    #7c26d9;  /* primária — CTA, marca, destaque */
+  --azul:    #3b82f6;  /* "Hub", highlights, gradiente */
+  --magenta: #a855f7;  /* início do gradiente de destaque */
+  --lilas:   #c4b5fd;  /* kicker, swipe */
+  --base:    #0a0a0f;  /* fundo */
+  --card:    #0f0f17;
+  --fg:      #fafafa;  /* texto principal */
+  --fg-sub:  #b8b8c4;  /* subtítulo */
+  --fg-mut:  #8a8a99;  /* tag rodapé */
 
-  --font-title: 'Montserrat', 'Segoe UI', Arial, sans-serif;
-  --font-body:  'Open Sans', 'Segoe UI', Arial, sans-serif;
+  --font-title: 'Space Grotesk', sans-serif;  /* títulos, marca, kicker */
+  --font-body:  'Inter', sans-serif;          /* corpo */
+  --font-num:   'Montserrat', sans-serif;      /* números/display */
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
+* { margin:0; padding:0; box-sizing:border-box; -webkit-print-color-adjust:exact; }
+html, body { overflow:hidden; }
+body { background:var(--base); color:var(--fg); font-family:var(--font-body); }
 
-html, body { overflow: hidden; }
+/* Canvas — defina a dimensão no <body class="card canvas--*">.
+   A dimensão DEVE bater com --window-size passado ao render.py. */
+.card { position:relative; overflow:hidden; padding:96px 84px; display:flex; flex-direction:column; }
+.canvas--feed     { width:1080px; height:1350px; }  /* IG feed 4:5 (default) */
+.canvas--square   { width:1080px; height:1080px; }  /* IG/LinkedIn 1:1 */
+.canvas--yt-thumb { width:1280px; height:720px;  }  /* YouTube thumbnail */
+.canvas--vertical { width:1080px; height:1920px; }  /* TikTok/Reels/Stories */
 
-/* Canvas — defina a classe da dimensão alvo no <body>.
-   O tamanho do canvas DEVE bater com --window-size passado ao render.py. */
-.canvas {
-  position: relative;
-  overflow: hidden;
-  font-family: var(--font-body);
-  color: var(--horus-white);
-  display: flex;
-  flex-direction: column;
-}
-.canvas--ig-vertical { width: 1080px; height: 1350px; }   /* feed vertical IG */
-.canvas--square      { width: 1080px; height: 1080px; }   /* IG/LinkedIn quadrado */
-.canvas--yt-thumb    { width: 1280px; height: 720px; }    /* thumbnail YouTube */
-.canvas--vertical    { width: 1080px; height: 1920px; }   /* TikTok/Reels/Stories */
+/* Glows de fundo + grid (assinatura visual) */
+.glow1 { position:absolute; width:760px; height:760px; border-radius:50%;
+         background:radial-gradient(circle, rgba(124,38,217,.55), transparent 70%);
+         top:-260px; right:-200px; filter:blur(20px); }
+.glow2 { position:absolute; width:620px; height:620px; border-radius:50%;
+         background:radial-gradient(circle, rgba(59,130,246,.40), transparent 70%);
+         bottom:-240px; left:-200px; filter:blur(20px); }
+.grid  { position:absolute; inset:0; opacity:.06;
+         background-image:linear-gradient(#fff 1px,transparent 1px),linear-gradient(90deg,#fff 1px,transparent 1px);
+         background-size:64px 64px; }
 
-/* Fundos */
-.bg-purple { background: var(--horus-purple); }
-.bg-blue   { background: var(--horus-blue); }
-.bg-dark   { background: var(--horus-dark); }
-.bg-light  { background: var(--horus-grey); color: var(--horus-dark); }
-.bg-gradient {
-  background: linear-gradient(135deg, var(--horus-purple) 0%, var(--horus-dark) 100%);
-}
-.bg-gradient-blue {
-  background: linear-gradient(135deg, var(--horus-purple) 0%, var(--horus-blue) 140%);
-}
+/* Marca (topo): emblema + "Horus Hub" (Hub em azul) */
+.brand { position:relative; display:flex; align-items:center; gap:18px; z-index:2; }
+.brand-name { font-family:var(--font-title); font-weight:700; font-size:32px; letter-spacing:1px; }
+.brand-name .hub { color:var(--azul); }
+/* Emblema: por padrão um hexágono CSS (placeholder público). Para a arte real da
+   Horus, troque por <img class="emblem" src="emblema.png"> (asset privado do horus-core). */
+.emblem, .emblem-ph { width:64px; height:64px; filter:drop-shadow(0 4px 16px rgba(124,38,217,.55)); }
+.emblem { object-fit:contain; }
+.emblem-ph { background:linear-gradient(135deg,var(--roxo),var(--azul));
+             clip-path:polygon(50% 0,93% 25%,93% 75%,50% 100%,7% 75%,7% 25%); }
 
-/* Grid digital sutil (estilo de marca: linhas neon/grade) — opcional, sobrepõe o fundo */
-.grid-overlay::before {
-  content: "";
-  position: absolute; inset: 0;
-  background-image:
-    linear-gradient(rgba(0,200,255,0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0,200,255,0.06) 1px, transparent 1px);
-  background-size: 60px 60px;
-  pointer-events: none;
-}
+/* Recurso [IA] — só em palavra que já contém "ia" (advocac[IA], estratég[IA]…) */
+.iabr { color:#6a6a7a; font-weight:700; }
+.iabr b { color:var(--roxo); font-style:normal; font-weight:700; }
 
-/* Tipografia */
-.title {
-  font-family: var(--font-title);
-  font-weight: 800;
-  line-height: 1.05;
-  letter-spacing: -0.01em;
-}
-.title--xl { font-size: 92px; }
-.title--lg { font-size: 72px; }
-.title--md { font-size: 54px; }
-.body {
-  font-family: var(--font-body);
-  font-weight: 400;
-  line-height: 1.35;
-}
-.body--lg { font-size: 40px; }
-.body--md { font-size: 34px; }
-.accent  { color: var(--horus-blue); }
-.muted   { opacity: 0.78; }
+/* Corpo */
+.body { position:relative; z-index:2; flex:1; display:flex; flex-direction:column; justify-content:center; }
+.kicker { display:inline-block; align-self:flex-start; font-family:var(--font-title);
+          font-weight:600; font-size:22px; letter-spacing:3px; text-transform:uppercase;
+          color:var(--lilas); background:rgba(124,38,217,.18); border:1px solid rgba(124,38,217,.5);
+          padding:10px 20px; border-radius:999px; margin-bottom:34px; }
+.headline { font-family:var(--font-title); font-weight:700; font-size:84px; line-height:1.04; letter-spacing:-1px; }
+.headline .hl { background:linear-gradient(100deg,var(--magenta),var(--azul));
+                -webkit-background-clip:text; background-clip:text; color:transparent; }
+.sub { font-size:34px; line-height:1.4; color:var(--fg-sub); margin-top:34px; font-weight:400; max-width:880px; }
 
-/* Espaçamento de conteúdo (margem segura — nada vital encosta na borda) */
-.pad { padding: 96px 88px; }
-.pad-lg { padding: 110px 96px; }
+/* Estilo DADO — número gigante */
+.bignum { font-family:var(--font-num); font-weight:800; font-size:300px; line-height:.9;
+          background:linear-gradient(120deg,var(--magenta),var(--azul)); -webkit-background-clip:text;
+          background-clip:text; color:transparent; letter-spacing:-6px; }
 
-/* Rodapé/handle e numeração de slide */
-.footer {
-  position: absolute;
-  left: 88px; right: 88px; bottom: 64px;
-  display: flex; align-items: center; justify-content: space-between;
-  font-family: var(--font-title); font-weight: 700; font-size: 30px;
-}
-.handle { color: var(--horus-blue); }
-.slide-num { opacity: 0.6; font-size: 28px; }
+/* Estilo MANTRA — centralizado, com aspas */
+.mantra { font-family:var(--font-title); font-weight:700; font-size:92px; line-height:1.1; text-align:center; letter-spacing:-1px; }
+.quote  { font-family:var(--font-title); font-size:160px; color:rgba(124,38,217,.5); line-height:.5; }
 
-/* Pílula/etiqueta (ex.: "MELHORIA RÁPIDA", "DADO") */
-.pill {
-  display: inline-block;
-  font-family: var(--font-title); font-weight: 700;
-  font-size: 26px; letter-spacing: 0.08em; text-transform: uppercase;
-  padding: 14px 28px; border-radius: 999px;
-  background: rgba(0,200,255,0.15); color: var(--horus-blue);
-  border: 2px solid var(--horus-blue);
-}
+/* Estilo OFFER — linhas label/valor */
+.rows { margin-top:30px; display:flex; flex-direction:column; gap:20px; }
+.row  { display:flex; align-items:center; justify-content:space-between; gap:20px;
+        background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.09);
+        border-radius:18px; padding:26px 30px; }
+.row .lbl { font-family:var(--font-title); font-weight:600; font-size:34px; }
+.row .val { font-family:var(--font-num); font-weight:800; font-size:40px; white-space:nowrap;
+            background:linear-gradient(100deg,var(--magenta),var(--azul));
+            -webkit-background-clip:text; background-clip:text; color:transparent; }
 
-/* Número grande de destaque (slides de dado) */
-.bignum {
-  font-family: var(--font-title); font-weight: 900;
-  font-size: 220px; line-height: 1; color: var(--horus-blue);
-}
+/* CTA pill (gradiente cheio — só em CTA) */
+.pill { align-self:flex-start; margin-top:40px; font-family:var(--font-title); font-weight:700;
+        font-size:32px; color:#fff; background:linear-gradient(100deg,var(--roxo),var(--azul));
+        padding:22px 44px; border-radius:999px; box-shadow:0 16px 40px rgba(124,38,217,.45); }
 
-/* Fonte da estatística (rodapé pequeno em slides de dado) */
-.source { font-size: 24px; opacity: 0.6; font-family: var(--font-body); }
+/* Rodapé */
+.foot { position:relative; z-index:2; display:flex; align-items:center; justify-content:space-between;
+        border-top:1px solid rgba(255,255,255,.12); padding-top:30px; }
+.handle { font-family:var(--font-title); font-weight:600; font-size:30px; color:var(--fg); }
+.foot .tag { font-size:24px; color:var(--fg-mut); max-width:520px; text-align:right; }
+.swipe { font-family:var(--font-title); font-weight:600; font-size:28px; color:var(--lilas); }
