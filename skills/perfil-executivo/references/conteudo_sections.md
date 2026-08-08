@@ -143,10 +143,22 @@ Use como referência para preencher as seções quando o usuário não fornecer 
 
 ---
 
-## Encarte de Oferta — Boas Práticas
+## Bloco de conversão (`cta_final`) — boas práticas
 
-- **Titular**: Transforme [resultado desejado] com [diferencial principal]
-- **Descrição**: Máximo 2–3 linhas, focadas no que o produto FAZ, não no que ele É
-- **CTA**: Verbo de ação + benefício direto (ex.: "QUERO CONHECER O {PRODUTO} →")
-- **Escassez**: Sempre incluir elemento de urgência/limitação
-- **Bônus**: Destacar bônus com cor dourada (#ffd700) para criar contraste visual
+- **Titular**: o resultado que o leitor leva, não o nome do produto.
+- **Descrição**: 2–3 linhas, focadas no que o produto FAZ, não no que ele É.
+- **Itens**: 3 a 5, cada um verificável. Entra em `itens`, que vira lista com
+  marcador.
+- **CTA**: verbo de ação + o que acontece depois. "Falar com a equipe",
+  "Ver a demonstração", "Receber o diagnóstico".
+- **Preço**: opcional. Só preencha `preco` se houver preço real a comunicar;
+  sem ele o bloco vira um próximo passo institucional.
+
+**Escassez só quando for verdade, e com a data.** "Turma fecha em 14/03" é
+informação; "últimas vagas" sem número é ruído, e o brand book proíbe urgência
+artificial. Sem prazo real, deixe `observacao` vazio.
+
+**Sem cor fora do canon.** O destaque de preço já sai no gradiente do produto —
+não introduza dourado nem nenhuma cor de fora para "criar contraste".
+
+**Sem emoji** (`✦`, `⏰`, `→` decorativo). É superfície de cliente.
